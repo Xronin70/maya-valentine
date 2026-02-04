@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Maya ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.section {
+  display: none;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.active {
+  display: block;
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 30px;
+  border-radius: 25px;
+  max-width: 700px;
+  margin: auto;
+}
+
+img {
+  max-width: 300px;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+button {
+  padding: 14px 28px;
+  margin: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: #ff1f6d;
+  color: white;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* FLOWERS */
+.flower {
+  position: fixed;
+  top: -50px;
+  font-size: 24px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 💘 LAYER 1 -->
+<div id="layer1" class="section active">
+  <div class="card">
+    <h1>Will you be my Valentine? ❤️</h1>
+    <img src="pic1.png">
+    <br>
+    <button onclick="goToLayer2()">Yes 💘</button>
+    <button onclick="goToLayer2()">Heck Yeah 😌</button>
+  </div>
+</div>
+
+<!-- 🌸 LAYER 2 -->
+<div id="layer2" class="section">
+  <div class="card">
+    <h2>My Heart Says…</h2>
+    <p>
+      I just want to know wherever life takes us,<br>
+      we will surely be together—filled with happiness and love.<br><br>
+      You complete me. Thank you for being my happiness.<br>
+      I love you ❤️
+    </p>
+    <img src="pic2.jpg"><br>
+    <button onclick="goToLayer3()">⚠️ Click at your own risk ☢️</button>
+  </div>
+</div>
+
+<!-- 😈 LAYER 3 -->
+<div id="layer3" class="section">
+  <div class="card">
+    <h2>Final Question 😏</h2>
+    <p>
+      Warning 🚨<br>
+      Can you sit on my face please,😂<br>
+    
+    </p>
+    <img src="pic3.png"><br>
+
+    <button id="noBtn">No ❌</button>
+    <button onclick="finalYes()">Yes ✅</button>
+
+    <h2 id="finalText" style="display:none;">🎉 Yayyy! Keep your words now 😌❤️</h2>
+  </div>
+</div>
+
+<script>
+function goToLayer2() {
+  document.getElementById("layer1").classList.remove("active");
+  document.getElementById("layer2").classList.add("active");
+  startFlowers();
+}
+
+function goToLayer3() {
+  document.getElementById("layer2").classList.remove("active");
+  document.getElementById("layer3").classList.add("active");
+}
+
+function finalYes() {
+  document.getElementById("finalText").style.display = "block";
+}
+
+// RUNAWAY NO BUTTON
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+  noBtn.style.position = "absolute";
+  noBtn.style.left = Math.random() * 80 + "%";
+  noBtn.style.top = Math.random() * 80 + "%";
+});
+
+// FLOWERS
+function startFlowers() {
+  for (let i = 0; i < 30; i++) {
+    let flower = document.createElement("div");
+    flower.className = "flower";
+    flower.innerHTML = "🌸";
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(flower);
+  }
+}
+</script>
+
+</body>
+</html>
